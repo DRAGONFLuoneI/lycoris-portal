@@ -1,0 +1,73 @@
+digraph UseCase {
+    rankdir=LR;
+    bgcolor="white";
+    fontname="DejaVu Sans";
+    node [fontname="DejaVu Sans", fontsize=11];
+    edge [fontname="DejaVu Sans", fontsize=9, color="#555555"];
+    nodesep=0.35; ranksep=1.1;
+
+    /* ---- Актёры ---- */
+    node [shape=none, margin=0, width=0.9];
+    guest    [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+                      <TR><TD><FONT POINT-SIZE="26">&#9786;</FONT></TD></TR>
+                      <TR><TD><B>Гость</B></TD></TR></TABLE>>];
+    gardener [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+                      <TR><TD><FONT POINT-SIZE="26">&#9786;</FONT></TD></TR>
+                      <TR><TD><B>Садовод</B></TD></TR></TABLE>>];
+    admin    [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+                      <TR><TD><FONT POINT-SIZE="26">&#9786;</FONT></TD></TR>
+                      <TR><TD><B>Администратор</B></TD></TR></TABLE>>];
+
+    /* ---- Границы системы ---- */
+    subgraph cluster_system {
+        label="Информационный портал «Lycoris»";
+        fontsize=13; fontname="DejaVu Sans"; labelloc="t";
+        style="rounded"; color="#999999"; bgcolor="#f7f5f1"; penwidth=1.2;
+
+        node [shape=ellipse, style=filled, fillcolor="white", color="#666666", width=2.1, height=0.62];
+
+        uc1  [label="Просматривать\nэнциклопедию сортов"];
+        uc2  [label="Фильтровать сорта\nпо параметрам"];
+        uc3  [label="Рассчитывать\nколичество луковиц"];
+        uc4  [label="Просматривать\nкалендарь ухода"];
+        uc5  [label="Искать питомники\nна карте"];
+        uc6  [label="Оставить заявку"];
+        uc7  [label="Зарегистрироваться"];
+        uc8  [label="Войти в систему"];
+
+        uc9  [label="Добавить сорт\nв избранное"];
+        uc10 [label="Просматривать\nисторию заявок"];
+        uc11 [label="Редактировать\nпрофиль"];
+        uc12 [label="Сменить пароль"];
+
+        uc13 [label="Управлять заявками", fillcolor="#ffeaea", color="#E60000"];
+        uc14 [label="Управлять\nпользователями", fillcolor="#ffeaea", color="#E60000"];
+        uc15 [label="Выгружать данные", fillcolor="#ffeaea", color="#E60000"];
+
+        uc16 [label="Валидация\nданных формы", style="filled,dashed", fillcolor="#fff8e5"];
+        uc17 [label="Проверка\nправ доступа",  style="filled,dashed", fillcolor="#fff8e5"];
+    }
+
+    /* ---- Связи актёров со сценариями ---- */
+    edge [arrowhead=none];
+    guest -> uc1; guest -> uc2; guest -> uc3; guest -> uc4;
+    guest -> uc5; guest -> uc6; guest -> uc7; guest -> uc8;
+
+    gardener -> uc9; gardener -> uc10; gardener -> uc11; gardener -> uc12;
+
+    admin -> uc13; admin -> uc14; admin -> uc15;
+
+    /* ---- Отношения include ---- */
+    edge [style=dashed, arrowhead=vee, label="«include»", fontsize=8, color="#999999"];
+    uc6  -> uc16;
+    uc7  -> uc16;
+    uc9  -> uc17;
+    uc10 -> uc17;
+    uc13 -> uc17;
+    uc14 -> uc17;
+
+    /* Наследование ролей: садовод и администратор — тоже пользователи */
+    edge [style=solid, arrowhead=onormal, label="", color="#444444"];
+    gardener -> guest [label="наследует", fontsize=8];
+    admin -> gardener [label="наследует", fontsize=8];
+}

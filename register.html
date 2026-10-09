@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>Регистрация — Lycoris</title>
+  <meta name="description" content="Регистрация аккаунта садовода на портале Lycoris." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header is-solid">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+        Lycoris
+      </a>
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Энциклопедия сортов</a></li>
+          <li><a href="calendar.html">Календарь ухода</a></li>
+          <li><a href="map.html">Где купить</a></li>
+          <li><a href="contact.html">Оставить заявку</a></li>
+        </ul>
+        <div class="nav-auth"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-tight">
+      <div class="container">
+        <p class="eyebrow-tag">Личный кабинет</p>
+        <h1>Регистрация</h1>
+        <p class="lead">Создайте аккаунт садовода, чтобы сохранять сорта в избранное и видеть историю своих заявок.</p>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container auth-layout">
+        <div class="auth-benefits">
+          <h2 class="visually-hidden">Что даёт регистрация</h2>
+          <div class="auth-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-9A5.3 5.3 0 0 1 12 6.6 5.3 5.3 0 0 1 21.3 12c-2.3 4.4-9.3 9-9.3 9Z"/></svg>
+            <div>
+              <h3>Избранные сорта</h3>
+              <p>Собирайте подборку видов под свой участок и возвращайтесь к ней в любой момент.</p>
+            </div>
+          </div>
+          <div class="auth-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+            <div>
+              <h3>Заявки под контролем</h3>
+              <p>Видно, какие заявки приняты в работу, а какие уже переданы питомнику-партнёру.</p>
+            </div>
+          </div>
+          <div class="auth-benefit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <div>
+              <h3>Профиль садовода</h3>
+              <p>Укажите регион один раз — и подбор сортов по морозостойкости станет точнее.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-card">
+          <h2>Создать аккаунт</h2>
+          <p class="auth-sub">Все поля, кроме телефона, обязательны для заполнения.</p>
+
+          <div class="auth-alert" id="register-alert" role="alert"></div>
+
+          <form id="register-form" novalidate>
+            <div class="field">
+              <label for="reg-name">Имя</label>
+              <input type="text" id="reg-name" name="fullName" autocomplete="name" required />
+              <span class="field-error">Укажите имя</span>
+            </div>
+            <div class="field">
+              <label for="reg-email">Электронная почта</label>
+              <input type="text" id="reg-email" name="email" autocomplete="email" required />
+              <span class="field-error">Укажите корректный адрес почты</span>
+            </div>
+            <div class="field">
+              <label for="reg-phone">Телефон <span class="optional">(необязательно)</span></label>
+              <input type="tel" id="reg-phone" name="phone" placeholder="+7 900 000-00-00" autocomplete="tel" />
+              <span class="field-error">Проверьте формат телефона</span>
+            </div>
+            <div class="field">
+              <label for="reg-password">Пароль</label>
+              <input type="password" id="reg-password" name="password" autocomplete="new-password" required />
+              <span class="field-error">Не менее 6 символов</span>
+            </div>
+            <div class="field">
+              <label for="reg-password2">Повторите пароль</label>
+              <input type="password" id="reg-password2" name="passwordRepeat" autocomplete="new-password" required />
+              <span class="field-error">Пароли не совпадают</span>
+            </div>
+            <div class="checkbox-field">
+              <input type="checkbox" id="reg-consent" name="consent" required />
+              <label for="reg-consent">Я согласен с <a href="privacy.html">Политикой конфиденциальности</a></label>
+              <span class="field-error">Нужно согласие</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+            <p class="form-note">Пароль хранится в виде необратимого хеша SHA-256 — в открытом виде он не сохраняется.</p>
+          </form>
+
+          <p class="auth-switch">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+            Lycoris
+          </a>
+          <p>Информационный портал о редких луковичных растениях. Не является интернет-магазином — соединяем читателей с проверенными питомниками.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Разделы</h2>
+          <ul>
+            <li><a href="catalog.html">Энциклопедия сортов</a></li>
+            <li><a href="calendar.html">Календарь ухода</a></li>
+            <li><a href="map.html">Где купить</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Портал</h2>
+          <ul>
+            <li><a href="contact.html">Оставить заявку</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Контакты</h2>
+          <ul>
+            <li><a href="mailto:hello@lycoris-portal.ru">hello@lycoris-portal.ru</a></li>
+            <li><a href="contact.html">Написать проводнику</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Информационный портал «Lycoris». Все права защищены.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="privacy.html#terms">Пользовательское соглашение</a>
+          <a href="privacy.html#152fz">152-ФЗ «О персональных данных»</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

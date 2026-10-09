@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>Панель администратора — Lycoris</title>
+  <meta name="description" content="Панель администратора портала Lycoris: управление заявками и пользователями." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header is-solid">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+        Lycoris
+      </a>
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Энциклопедия сортов</a></li>
+          <li><a href="calendar.html">Календарь ухода</a></li>
+          <li><a href="map.html">Где купить</a></li>
+          <li><a href="contact.html">Оставить заявку</a></li>
+        </ul>
+        <div class="nav-auth"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-tight">
+      <div class="container">
+        <div class="account-header">
+          <div class="account-avatar" id="adm-avatar">—</div>
+          <div class="account-ident">
+            <h1>Панель администратора</h1>
+            <p id="adm-email"></p>
+          </div>
+        </div>
+
+        <nav class="account-tabs" aria-label="Разделы панели">
+          <button type="button" class="account-tab is-active" data-tab="overview">Сводка</button>
+          <button type="button" class="account-tab" data-tab="leads">Заявки</button>
+          <button type="button" class="account-tab" data-tab="users">Пользователи</button>
+        </nav>
+
+        <!-- СВОДКА -->
+        <div class="account-panel is-active" data-panel="overview">
+          <div class="stat-grid">
+            <div class="stat-tile stat-tile--accent">
+              <div class="stat-value" id="adm-leads-new">0</div>
+              <div class="stat-label">Новых заявок</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value" id="adm-leads-total">0</div>
+              <div class="stat-label">Всего заявок</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value" id="adm-users">0</div>
+              <div class="stat-label">Пользователей</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value" id="adm-conv">0%</div>
+              <div class="stat-label">Заявок обработано</div>
+            </div>
+          </div>
+
+          <div class="settings-block">
+            <h3>Выгрузка данных</h3>
+            <p>Экспорт всех записей в файл JSON — для последующей загрузки в Excel или Google Таблицы (п. 6 ТЗ).</p>
+            <button type="button" class="btn btn-outline" id="adm-export">Выгрузить данные</button>
+          </div>
+        </div>
+
+        <!-- ЗАЯВКИ -->
+        <div class="account-panel" data-panel="leads">
+          <div class="admin-toolbar">
+            <input type="search" id="adm-lead-search" placeholder="Поиск по имени, контакту или региону" aria-label="Поиск заявок" />
+            <select id="adm-lead-status" aria-label="Фильтр по статусу">
+              <option value="all">Все статусы</option>
+              <option value="new">Новые</option>
+              <option value="in_work">В работе</option>
+              <option value="done">Обработаны</option>
+              <option value="rejected">Отклонены</option>
+            </select>
+          </div>
+          <div id="adm-leads-table"></div>
+        </div>
+
+        <!-- ПОЛЬЗОВАТЕЛИ -->
+        <div class="account-panel" data-panel="users">
+          <div class="admin-toolbar">
+            <input type="search" id="adm-user-search" placeholder="Поиск по имени или почте" aria-label="Поиск пользователей" />
+          </div>
+          <div id="adm-users-table"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+            Lycoris
+          </a>
+          <p>Информационный портал о редких луковичных растениях. Не является интернет-магазином — соединяем читателей с проверенными питомниками.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Разделы</h2>
+          <ul>
+            <li><a href="catalog.html">Энциклопедия сортов</a></li>
+            <li><a href="calendar.html">Календарь ухода</a></li>
+            <li><a href="map.html">Где купить</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Портал</h2>
+          <ul>
+            <li><a href="contact.html">Оставить заявку</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Контакты</h2>
+          <ul>
+            <li><a href="mailto:hello@lycoris-portal.ru">hello@lycoris-portal.ru</a></li>
+            <li><a href="contact.html">Написать проводнику</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Информационный портал «Lycoris». Все права защищены.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="privacy.html#terms">Пользовательское соглашение</a>
+          <a href="privacy.html#152fz">152-ФЗ «О персональных данных»</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

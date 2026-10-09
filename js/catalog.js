@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderGrid(grid, filtered);
     attachPhotoFallbacks(grid);
+    attachFavoriteToggles(grid);
     countEl.textContent = `Показано ${filtered.length} из ${window.LYCORIS_VARIETIES.length} сортов`;
   }
 
@@ -77,9 +78,25 @@ function varietyCardTemplate(v) {
        </a>`
     : flowerIllustration(v.gradient);
 
+  // Кнопка «в избранное» показывается только авторизованному пользователю:
+  // избранное привязано к учётной записи (таблица favorites).
+  const user = window.LycorisAuth ? window.LycorisAuth.currentUser() : null;
+  const isFav = user ? window.LycorisDB.Favorites.has(user.id, v.id) : false;
+  const favButton = user
+    ? `<button type="button" class="fav-toggle${isFav ? " is-active" : ""}"
+         data-fav="${v.id}"
+         aria-pressed="${isFav}"
+         title="${isFav ? "Убрать из избранного" : "Добавить в избранное"}">
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+           <path d="M12 21s-7-4.6-9.3-9A5.3 5.3 0 0 1 12 6.6 5.3 5.3 0 0 1 21.3 12c-2.3 4.4-9.3 9-9.3 9Z"/>
+         </svg>
+       </button>`
+    : "";
+
   return `
     <article class="variety-card card-enter">
       <div class="variety-media" style="--variety-color:${v.hex}" data-variety-id="${v.id}">
+        ${favButton}
         ${mediaContent}
       </div>
       <div class="variety-body">
@@ -105,6 +122,24 @@ function varietyCardTemplate(v) {
  * его на детализированную векторную иллюстрацию, чтобы карточка никогда
  * не показывала «битую» картинку.
  */
+/**
+ * Навешивает обработчики на кнопки «в избранное». Запись добавляется или
+ * удаляется в «таблице» favorites, привязанной к текущему пользователю.
+ */
+function attachFavoriteToggles(grid) {
+  const user = window.LycorisAuth ? window.LycorisAuth.currentUser() : null;
+  if (!user) return;
+
+  grid.querySelectorAll("[data-fav]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const res = window.LycorisDB.Favorites.toggle(user.id, btn.dataset.fav);
+      btn.classList.toggle("is-active", res.added);
+      btn.setAttribute("aria-pressed", String(res.added));
+      btn.title = res.added ? "Убрать из избранного" : "Добавить в избранное";
+    });
+  });
+}
+
 function attachPhotoFallbacks(grid) {
   grid.querySelectorAll("img.variety-photo[data-variety-id]").forEach((img) => {
     img.addEventListener(
@@ -278,3 +313,7 @@ function flowerIllustration(gradientStops, options) {
     <circle cx="${CX}" cy="${CY}" r="9" fill="#3d5c3a" />
   </svg>`;
 }
+
+/* Делаем генератор иллюстрации доступным другим страницам (личный кабинет
+   рисует им карточки избранных сортов). */
+window.flowerIllustration = flowerIllustration;

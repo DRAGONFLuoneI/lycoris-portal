@@ -1,0 +1,121 @@
+classDiagram
+    direction TB
+
+    class User {
+        -int id
+        -string fullName
+        -string email
+        -string phone
+        -string region
+        -string passwordHash
+        -bool isActive
+        -datetime createdAt
+        +register() bool
+        +login(password) bool
+        +logout() void
+        +updateProfile(data) bool
+        +changePassword(old, new) bool
+    }
+
+    class Role {
+        -int id
+        -string code
+        -string title
+        -string description
+        +hasPermission(action) bool
+    }
+
+    class Gardener {
+        +addToFavorites(variety) void
+        +removeFromFavorites(variety) void
+        +viewMyLeads() Lead[]
+    }
+
+    class Administrator {
+        +viewAllLeads() Lead[]
+        +changeLeadStatus(lead, status) void
+        +blockUser(user) void
+        +exportData() File
+    }
+
+    class Variety {
+        -int id
+        -string slug
+        -string name
+        -string latinName
+        -string summary
+        -string careText
+        -int usdaMin
+        -int usdaMax
+        -int heightCm
+        -int bloomStart
+        -int bloomEnd
+        +matchesFilter(zone, height, month) bool
+    }
+
+    class Nursery {
+        -int id
+        -string name
+        -string city
+        -string address
+        -string phone
+        -decimal latitude
+        -decimal longitude
+        -bool isActive
+        +getVarieties() Variety[]
+        +isInCity(city) bool
+    }
+
+    class Lead {
+        -int id
+        -string customerName
+        -string contact
+        -string region
+        -string subject
+        -string comment
+        -OrderType orderType
+        -LeadStatus status
+        -datetime createdAt
+        +validate() bool
+        +send() bool
+        +setStatus(status) void
+    }
+
+    class Favorite {
+        -int userId
+        -int varietyId
+        -datetime createdAt
+    }
+
+    class CareCalendar {
+        -int id
+        -int monthNum
+        -Season season
+        -string taskText
+        +getTasksForMonth(month) string[]
+    }
+
+    class BulbCalculator {
+        -float plantingStep
+        -float reserveRatio
+        +calculate(area) int
+        +calculateReserve(area) int
+    }
+
+    class AuthService {
+        +hashPassword(password) string
+        +verifyPassword(password, hash) bool
+        +createSession(user) Session
+        +requireAuth(role) User
+    }
+
+    User "1" --> "1" Role : имеет
+    User <|-- Gardener : наследует
+    User <|-- Administrator : наследует
+    User "1" --> "0..*" Lead : оставляет
+    User "1" --> "0..*" Favorite : собирает
+    Favorite "0..*" --> "1" Variety : ссылается на
+    Nursery "0..*" --> "0..*" Variety : продаёт
+    Lead "0..*" --> "0..1" Nursery : передаётся
+    AuthService ..> User : обслуживает
+    BulbCalculator ..> Variety : рассчитывает для

@@ -1,0 +1,51 @@
+sequenceDiagram
+    autonumber
+    actor U as Пользователь
+    participant UI as Интерфейс<br/>(register.html)
+    participant AU as Модуль авторизации<br/>(auth.js)
+    participant DB as Слой данных<br/>(db.js)
+    participant ST as Хранилище<br/>(localStorage)
+
+    Note over U,ST: Сценарий «Регистрация и вход в личный кабинет»
+
+    U->>UI: Заполняет форму регистрации
+    U->>UI: Нажимает «Зарегистрироваться»
+    UI->>AU: validateRegistration(данные)
+    AU-->>UI: Результат проверки
+
+    alt Данные некорректны
+        UI-->>U: Подсветка полей с ошибками
+    else Данные корректны
+        UI->>AU: register(данные)
+        AU->>DB: Users.findByEmail(email)
+        DB->>ST: Чтение таблицы users
+        ST-->>DB: Массив записей
+        DB-->>AU: Пользователь не найден
+
+        AU->>DB: Users.create(данные)
+        DB->>DB: hashPassword(пароль) — SHA-256
+        DB->>ST: Запись в таблицу users
+        ST-->>DB: Подтверждение записи
+        DB-->>AU: Объект пользователя
+
+        AU->>AU: setSession(пользователь)
+        AU-->>UI: Успешная регистрация
+        UI-->>U: Переход в личный кабинет
+    end
+
+    Note over U,ST: Сценарий «Отправка заявки авторизованным пользователем»
+
+    U->>UI: Открывает форму заявки
+    UI->>AU: currentUser()
+    AU->>DB: Users.findById(id сессии)
+    DB-->>AU: Данные профиля
+    AU-->>UI: Профиль пользователя
+    UI-->>U: Поля заполнены автоматически
+
+    U->>UI: Нажимает «Отправить заявку»
+    UI->>UI: validateLeadForm()
+    UI->>DB: Leads.create(заявка, user_id)
+    DB->>ST: Запись в таблицу leads
+    ST-->>DB: Подтверждение
+    DB-->>UI: Заявка сохранена
+    UI-->>U: Окно «Ваша заявка принята»

@@ -18,7 +18,28 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".lead-form").forEach(attachLeadForm);
+  prefillFromProfile();
 });
+
+/**
+ * Если пользователь вошёл в аккаунт, подставляет в формы заявки имя,
+ * контакт и регион из его профиля — не нужно вводить их каждый раз.
+ * Поля остаются доступными для правки.
+ */
+function prefillFromProfile() {
+  const user = window.LycorisAuth ? window.LycorisAuth.currentUser() : null;
+  if (!user) return;
+
+  document.querySelectorAll(".lead-form").forEach((form) => {
+    const name = form.querySelector('[name="name"]');
+    const contact = form.querySelector('[name="contact"]');
+    const region = form.querySelector('[name="region"]');
+
+    if (name && !name.value) name.value = user.full_name || "";
+    if (contact && !contact.value) contact.value = user.phone || user.email || "";
+    if (region && !region.value) region.value = user.region || "";
+  });
+}
 
 function attachLeadForm(form) {
   const submitBtn = form.querySelector('[type="submit"]');
@@ -141,8 +162,22 @@ function collectFormData(form) {
  * "cf-turnstile-response" вместе с данными формы для серверной проверки.
  */
 function sendLeadToServer(payload) {
-  console.info("[Lycoris] Новая заявка (демо-режим, бэкенд не подключён):", payload);
-  return new Promise((resolve) => setTimeout(resolve, 900));
+  // Заявка сохраняется в клиентском слое данных (см. js/db.js) — в
+  // «таблицу» leads. Если пользователь авторизован, заявка привязывается
+  // к его учётной записи и становится видна в личном кабинете.
+  const user = window.LycorisAuth ? window.LycorisAuth.currentUser() : null;
+
+  if (window.LycorisDB) {
+    window.LycorisDB.Leads.create(
+      Object.assign({}, payload, { user_id: user ? user.id : null })
+    );
+  }
+
+  console.info("[Lycoris] Заявка сохранена:", payload);
+
+  // Небольшая задержка имитирует сетевой запрос, чтобы было видно
+  // состояние кнопки «Отправляем…».
+  return new Promise((resolve) => setTimeout(resolve, 600));
 }
 
 /**

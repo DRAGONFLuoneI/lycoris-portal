@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>Личный кабинет — Lycoris</title>
+  <meta name="description" content="Личный кабинет садовода: избранные сорта, история заявок, настройки профиля." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header is-solid">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+        Lycoris
+      </a>
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Энциклопедия сортов</a></li>
+          <li><a href="calendar.html">Календарь ухода</a></li>
+          <li><a href="map.html">Где купить</a></li>
+          <li><a href="contact.html">Оставить заявку</a></li>
+        </ul>
+        <div class="nav-auth"></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-tight">
+      <div class="container">
+        <div class="account-header">
+          <div class="account-avatar" id="acc-avatar">—</div>
+          <div class="account-ident">
+            <h1 id="acc-name">Личный кабинет</h1>
+            <p id="acc-email"></p>
+          </div>
+        </div>
+
+        <nav class="account-tabs" aria-label="Разделы кабинета">
+          <button type="button" class="account-tab is-active" data-tab="overview">Обзор</button>
+          <button type="button" class="account-tab" data-tab="favorites">Избранные сорта</button>
+          <button type="button" class="account-tab" data-tab="leads">Мои заявки</button>
+          <button type="button" class="account-tab" data-tab="settings">Настройки профиля</button>
+        </nav>
+
+        <!-- ОБЗОР -->
+        <div class="account-panel is-active" data-panel="overview">
+          <div class="stat-grid">
+            <div class="stat-tile stat-tile--accent">
+              <div class="stat-value" id="stat-fav">0</div>
+              <div class="stat-label">Сортов в избранном</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value" id="stat-leads">0</div>
+              <div class="stat-label">Всего заявок</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value" id="stat-leads-work">0</div>
+              <div class="stat-label">Заявок в работе</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value" id="stat-since">—</div>
+              <div class="stat-label">Дата регистрации</div>
+            </div>
+          </div>
+
+          <div class="promo-banner">
+            <div>
+              <h3>Нужен подбор сорта под ваш климат?</h3>
+              <p>Проводник свяжется с вами и подтвердит наличие у питомника-партнёра.</p>
+            </div>
+            <a href="contact.html" class="btn btn-primary">Оставить заявку</a>
+          </div>
+        </div>
+
+        <!-- ИЗБРАННОЕ -->
+        <div class="account-panel" data-panel="favorites">
+          <div id="fav-list"></div>
+        </div>
+
+        <!-- ЗАЯВКИ -->
+        <div class="account-panel" data-panel="leads">
+          <div id="leads-list"></div>
+        </div>
+
+        <!-- НАСТРОЙКИ -->
+        <div class="account-panel" data-panel="settings">
+          <div class="settings-grid">
+            <div class="settings-block">
+              <h3>Данные профиля</h3>
+              <p>Эти данные подставляются в форму заявки автоматически.</p>
+              <div class="form-success" id="profile-success">Изменения сохранены</div>
+              <form id="profile-form" novalidate>
+                <div class="field">
+                  <label for="pf-name">Имя</label>
+                  <input type="text" id="pf-name" name="full_name" required />
+                  <span class="field-error">Укажите имя</span>
+                </div>
+                <div class="field">
+                  <label for="pf-phone">Телефон</label>
+                  <input type="tel" id="pf-phone" name="phone" placeholder="+7 900 000-00-00" />
+                  <span class="field-error">Проверьте формат телефона</span>
+                </div>
+                <div class="field">
+                  <label for="pf-region">Регион / Город</label>
+                  <input type="text" id="pf-region" name="region" placeholder="Например, Москва" />
+                </div>
+                <div class="field">
+                  <label for="pf-email">Электронная почта</label>
+                  <input type="text" id="pf-email" disabled />
+                  <p class="form-note">Почта служит логином и не меняется.</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+              </form>
+            </div>
+
+            <div class="settings-block">
+              <h3>Смена пароля</h3>
+              <p>Пароль хранится в виде необратимого хеша SHA-256.</p>
+              <div class="form-success" id="password-success">Пароль изменён</div>
+              <div class="auth-alert" id="password-alert" role="alert"></div>
+              <form id="password-form" novalidate>
+                <div class="field">
+                  <label for="pw-current">Текущий пароль</label>
+                  <input type="password" id="pw-current" name="current" autocomplete="current-password" required />
+                  <span class="field-error">Введите текущий пароль</span>
+                </div>
+                <div class="field">
+                  <label for="pw-new">Новый пароль</label>
+                  <input type="password" id="pw-new" name="next" autocomplete="new-password" required />
+                  <span class="field-error">Не менее 6 символов</span>
+                </div>
+                <div class="field">
+                  <label for="pw-new2">Повторите новый пароль</label>
+                  <input type="password" id="pw-new2" name="repeat" autocomplete="new-password" required />
+                  <span class="field-error">Пароли не совпадают</span>
+                </div>
+                <button type="submit" class="btn btn-outline">Изменить пароль</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+            Lycoris
+          </a>
+          <p>Информационный портал о редких луковичных растениях. Не является интернет-магазином — соединяем читателей с проверенными питомниками.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Разделы</h2>
+          <ul>
+            <li><a href="catalog.html">Энциклопедия сортов</a></li>
+            <li><a href="calendar.html">Календарь ухода</a></li>
+            <li><a href="map.html">Где купить</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Портал</h2>
+          <ul>
+            <li><a href="contact.html">Оставить заявку</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Контакты</h2>
+          <ul>
+            <li><a href="mailto:hello@lycoris-portal.ru">hello@lycoris-portal.ru</a></li>
+            <li><a href="contact.html">Написать проводнику</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Информационный портал «Lycoris». Все права защищены.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="privacy.html#terms">Пользовательское соглашение</a>
+          <a href="privacy.html#152fz">152-ФЗ «О персональных данных»</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>
