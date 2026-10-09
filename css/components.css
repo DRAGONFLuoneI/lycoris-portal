@@ -1,0 +1,175 @@
+/* ==========================================================================
+   COMPONENTS.CSS
+   Переиспользуемые блоки интерфейса: карточки, модальное окно, теги.
+   ========================================================================== */
+
+/* ---- Тизер-карточка (используется на Главной: 3 ссылки на разделы) ---- */
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+}
+.teaser-card {
+  background: var(--color-white);
+  padding: var(--space-m);
+  display: grid;
+  /* Фиксированная сетка строк: иконка → заголовок → текст → ссылка.
+     Благодаря этому заголовки и ссылки всех трёх карточек лежат
+     на одной линии, даже если описания разной длины. */
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--space-s);
+  min-height: 260px;
+  transition: background-color var(--dur-med) var(--ease-out);
+}
+.teaser-card:hover { background: var(--color-paper); }
+.teaser-card .teaser-icon { width: 34px; height: 34px; color: var(--color-accent); }
+.teaser-card p { font-size: 0.92rem; color: var(--color-text-muted); }
+.teaser-card .teaser-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.88rem; font-weight: 600; color: var(--color-ink);
+}
+.teaser-card .teaser-link svg { width: 14px; height: 14px; transition: transform var(--dur-fast) var(--ease-out); }
+.teaser-card:hover .teaser-link svg { transform: translateX(3px); }
+
+/* ---- Карточка статьи ---------------------------------------------------- */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-m);
+}
+.article-card { display: flex; flex-direction: column; }
+.article-card .article-media {
+  aspect-ratio: 4 / 3;
+  background: var(--color-paper);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  margin-bottom: var(--space-s);
+}
+.article-card .article-media svg { width: 100%; height: 100%; }
+.article-card .article-tag { font-size: 0.78rem; font-weight: 600; color: var(--color-accent); margin-bottom: 0.4rem; }
+.article-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.article-card p { font-size: 0.92rem; color: var(--color-text-muted); }
+.article-card a.article-cover { display: block; }
+/* Заголовок-ссылка внутри карточки — подчёркивание появляется при наведении
+   на всю карточку, а не только на сам текст: так связь читается яснее. */
+.article-card h3 a { transition: color var(--dur-fast) var(--ease-out); }
+.article-card:hover h3 a { color: var(--color-accent); }
+.article-card .article-media svg { transition: transform var(--dur-slow) var(--ease-out); }
+.article-card:hover .article-media svg { transform: scale(1.04); }
+
+/* ---- Значок/бейдж -------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid currentColor;
+}
+
+/* ---- Модальное окно / поп-ап (форма заявки, вызывается с любой страницы) */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(26, 26, 26, 0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-s);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-med) var(--ease-out);
+}
+.modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+.modal-box {
+  background: var(--color-white);
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-s);
+  padding: var(--space-m);
+  position: relative;
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+  transition: transform var(--dur-med) var(--ease-out), opacity var(--dur-med) var(--ease-out);
+}
+.modal-overlay.is-open .modal-box { transform: translateY(0) scale(1); opacity: 1; }
+.modal-close {
+  position: absolute; top: var(--space-s); right: var(--space-s);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-muted);
+}
+.modal-close:hover { color: var(--color-accent); }
+.modal-close svg { width: 18px; height: 18px; }
+.modal-box h3 { padding-right: 2rem; margin-bottom: 0.3rem; }
+.modal-box .modal-sub { font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-m); }
+
+/* ---- Успех отправки формы: стильный поп-ап ------------------------------ */
+.success-box { text-align: center; padding-block: var(--space-s); }
+.success-box .success-icon {
+  width: 56px; height: 56px;
+  margin-inline: auto var(--space-s);
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.success-box .success-icon svg { width: 26px; height: 26px; }
+.success-box h3 { margin-bottom: 0.5rem; }
+.success-box p { color: var(--color-text-muted); margin-inline: auto; }
+
+/* ---- Промо-баннер (используется в статьях/страницах сортов) -------------
+   Единственный «сияющий» акцент на светлых страницах: мягкое тёплое
+   свечение из-за левого края баннера, чтобы тёмный блок не выглядел
+   плоской заплаткой. Держим его очень деликатным. */
+.promo-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-charcoal);
+  color: var(--color-text-on-dark);
+  border-radius: var(--radius-s);
+  padding: var(--space-m) var(--space-l);
+  margin-top: var(--space-l);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+}
+.promo-banner::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -6%;
+  top: 50%;
+  width: 46%;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(230, 0, 0, 0.22) 0%, rgba(230, 0, 0, 0) 68%);
+  pointer-events: none;
+}
+.promo-banner > div { position: relative; }
+.promo-banner h3 { color: var(--color-text-on-dark); margin-bottom: 0.3rem; }
+.promo-banner p { color: var(--color-text-muted-dark); font-size: 0.92rem; }
+
+/* ---- Скелетон/лоадер для интерактивных блоков (карта, каталог) ---------- */
+.loading-dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; margin-right: 4px;
+  animation: pulse-dot 1.1s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+/* ---- Responsive ---------------------------------------------------------- */
+@media (max-width: 900px) {
+  .article-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .teaser-grid { grid-template-columns: 1fr; }
+  .article-grid { grid-template-columns: 1fr; }
+  .promo-banner { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,330 @@
+/* ==========================================================================
+   BASE.CSS
+   Сброс стилей, типографика, шапка/подвал, кнопки, формы.
+   Подключается на КАЖДОЙ странице сразу после variables.css
+   ========================================================================== */
+
+/* ---- Reset ----------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body { height: 100%; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul, ol { list-style: none; }
+input, textarea, select { font: inherit; color: inherit; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--color-ink);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+p { max-width: 68ch; }
+p.lead { font-size: var(--fs-lead); color: var(--color-text-muted); max-width: 52ch; }
+
+/* Видимый фокус для доступности — не убираем, а стилизуем */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---- Контейнер --------------------------------------------------------- */
+.container {
+  max-width: var(--container-w);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ---- Skip-link (доступность) ------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 1000;
+}
+.skip-link:focus { left: var(--space-s); top: var(--space-s); }
+
+/* Заголовок, видимый только скринридерам: нужен, чтобы структура
+   заголовков страницы шла без «перескоков» уровней (h1 → h2 → h3). */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   ШАПКА САЙТА
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 500;
+  padding-block: 1.4rem;
+  transition: background-color var(--dur-med) var(--ease-out),
+              padding-block var(--dur-med) var(--ease-out),
+              border-color var(--dur-med) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+/* На странице без тёмного hero шапка сразу непрозрачная */
+.site-header.is-solid,
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-color: var(--color-line);
+  padding-block: 0.9rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-style: italic;
+  white-space: nowrap;
+}
+.logo .logo-mark { width: 26px; height: 26px; color: var(--color-accent); flex-shrink: 0; }
+
+.main-nav { display: flex; align-items: center; gap: var(--space-m); }
+.main-nav ul { display: flex; gap: 1.9rem; }
+.main-nav a {
+  font-size: 0.95rem;
+  position: relative;
+  padding-block: 0.2rem;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: -2px;
+  height: 1px;
+  background: var(--color-accent);
+  transition: right var(--dur-fast) var(--ease-out);
+}
+.main-nav a:hover::after,
+.main-nav a[aria-current="page"]::after { right: 0; }
+.main-nav a[aria-current="page"] { font-weight: 600; }
+
+.nav-toggle {
+  display: none;
+  width: 34px; height: 34px;
+  position: relative;
+  z-index: 600;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 6px; right: 6px;
+  height: 2px;
+  background: currentColor;
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+}
+.nav-toggle span { top: 16px; }
+.nav-toggle span::before { top: -7px; }
+.nav-toggle span::after { top: 7px; }
+.nav-toggle[aria-expanded="true"] span { background: transparent; }
+.nav-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* ==========================================================================
+   ПОДВАЛ САЙТА
+   ========================================================================== */
+.site-footer {
+  background: var(--color-charcoal);
+  color: var(--color-text-on-dark);
+  padding-block: var(--space-l) var(--space-m);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: var(--space-l);
+  padding-bottom: var(--space-l);
+  border-bottom: 1px solid var(--color-line-dark);
+}
+.footer-brand .logo { color: var(--color-text-on-dark); }
+.footer-brand p { color: var(--color-text-muted-dark); font-size: var(--fs-small); margin-top: var(--space-s); }
+.footer-col h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted-dark);
+  margin-bottom: var(--space-s);
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a { font-size: 0.92rem; color: var(--color-text-on-dark); opacity: 0.88; transition: opacity var(--dur-fast); }
+.footer-col a:hover { opacity: 1; color: var(--color-accent); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  padding-top: var(--space-m);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted-dark);
+}
+.footer-legal { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.footer-legal a { color: var(--color-text-muted-dark); }
+.footer-legal a:hover { color: var(--color-accent); }
+
+/* ==========================================================================
+   КНОПКИ
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-s);
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+/* Основная кнопка — единственный элемент интерфейса, который «светится»
+   на всех страницах: едва заметный тёплый ореол, усиливающийся при
+   наведении. Так главное действие читается первым, без пестроты. */
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(230, 0, 0, 0.22);
+}
+.btn-primary:hover {
+  background: var(--color-accent-deep);
+  box-shadow: 0 4px 22px rgba(230, 0, 0, 0.38);
+}
+.btn-outline { border: 1px solid var(--color-ink); color: var(--color-ink); }
+.btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.btn-outline-light { border: 1px solid rgba(242,240,234,0.5); color: var(--color-text-on-dark); }
+.btn-outline-light:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.btn-ghost { color: var(--color-accent); font-weight: 600; padding-inline: 0; }
+.btn-ghost svg { width: 16px; height: 16px; transition: transform var(--dur-fast) var(--ease-out); }
+.btn-ghost:hover svg { transform: translateX(3px); }
+.btn-block { width: 100%; justify-content: center; }
+
+/* ==========================================================================
+   ФОРМЫ (общие стили полей — используются в contact.html и в модальном окне)
+   ========================================================================== */
+.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: var(--space-s); }
+.field label { font-size: 0.85rem; font-weight: 600; }
+.field .optional { font-weight: 400; color: var(--color-text-muted); }
+.field input[type="text"],
+.field input[type="tel"],
+.field textarea,
+.field select {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-s);
+  padding: 0.85rem 1rem;
+  background: var(--color-white);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+  outline: none;
+}
+.field textarea { resize: vertical; min-height: 90px; }
+.field.has-error input, .field.has-error textarea { border-color: var(--color-accent); }
+.field-error {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  display: none;
+}
+.field.has-error .field-error { display: block; }
+
+.checkbox-field { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: var(--space-m); }
+.checkbox-field input { width: 18px; height: 18px; margin-top: 0.15rem; accent-color: var(--color-accent); flex-shrink: 0; }
+.checkbox-field label { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
+.checkbox-field a { color: var(--color-ink); text-decoration: underline; text-underline-offset: 2px; }
+
+.form-note { font-size: 0.8rem; color: var(--color-text-muted); margin-top: var(--space-xs); }
+
+/* ==========================================================================
+   Раздел страницы — общие утилиты компоновки
+   ========================================================================== */
+.section { padding-block: var(--space-xl); }
+.section-tight { padding-block: var(--space-l); }
+.section-dark { background: var(--color-charcoal); color: var(--color-text-on-dark); }
+.section-paper { background: var(--color-paper); }
+.section-head { max-width: 640px; margin-bottom: var(--space-l); }
+.divider {
+  width: 64px; height: 2px;
+  background: var(--color-accent);
+  border: 0;
+  margin-block: var(--space-s) var(--space-m);
+}
+
+/* Page hero placeholder used on inner pages (not the animated homepage hero) */
+.page-hero {
+  padding-top: calc(var(--space-xl) + 2rem);
+  padding-bottom: var(--space-l);
+}
+.page-hero .eyebrow-tag {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---- Responsive: планшет и мобильный ---------------------------------- */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; row-gap: var(--space-m); }
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .main-nav {
+    position: fixed;
+    inset: 0;
+    background: var(--color-white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--space-l) var(--container-pad);
+    transform: translateX(100%);
+    transition: transform var(--dur-med) var(--ease-out);
+  }
+  .main-nav.is-open { transform: translateX(0); }
+  .main-nav ul { flex-direction: column; gap: var(--space-m); }
+  .main-nav ul a { font-size: 1.5rem; font-family: var(--font-display); }
+  .main-nav .nav-cta { margin-top: var(--space-m); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--space-m); }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}

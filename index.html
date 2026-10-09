@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>Lycoris — портал о редких луковичных растениях</title>
+  <meta name="description" content="Экспертный портал о ликорисе (паучьей лилии): энциклопедия сортов, календарь ухода, карта питомников-партнёров и подбор растений под ваш климат." />
+  <!-- Open Graph / Twitter: как ссылка на страницу выглядит в соцсетях и мессенджерах.
+       Перед публикацией замените https://lycoris-portal.ru на реальный домен сайта. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lycoris" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="Lycoris — портал о редких луковичных растениях" />
+  <meta property="og:description" content="Экспертный портал о ликорисе (паучьей лилии): энциклопедия сортов, календарь ухода, карта питомников-партнёров и подбор растений под ваш климат." />
+  <meta property="og:url" content="https://lycoris-portal.ru/" />
+  <meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Red%20spider%20lily%20(Lycoris%20radiata).webp?width=1200" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lycoris — портал о редких луковичных растениях" />
+  <meta name="twitter:description" content="Экспертный портал о ликорисе (паучьей лилии): энциклопедия сортов, календарь ухода, карта питомников-партнёров и подбор растений под ваш климат." />
+  <meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Red%20spider%20lily%20(Lycoris%20radiata).webp?width=1200" />
+
+  <!-- Шрифты по ТЗ: Playfair Display для заголовков, Inter для текста -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- ============================== ШАПКА ============================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+        Lycoris
+      </a>
+
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html" aria-current="page">Главная</a></li>
+          <li><a href="catalog.html">Энциклопедия сортов</a></li>
+          <li><a href="calendar.html">Календарь ухода</a></li>
+          <li><a href="map.html">Где купить</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Оставить заявку</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================== HERO ============================== -->
+    <!-- ============================== HERO ==============================
+         Фон — фотография ликориса с открытой лицензией (Wikimedia Commons,
+         общественное достояние), цветок скомпонован в левой части кадра.
+         Замена/настройка: см. .hero { background-image } в css/home.css —
+         там же background-position, если захотите сместить кадрирование. -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-fade-bottom" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Экспертный портал · с 2024 года</p>
+          <h1>Ликорис.<br>Цветок, который<br>обгоняет листья.</h1>
+          <p class="hero-lead">Всё о редких луковичных растениях с фокусом на ликорис (хиганбану): сорта, уход по сезонам и проверенные питомники — для тех, кто выращивает необычное.</p>
+          <div class="hero-actions">
+            <a href="catalog.html" class="btn btn-primary">Изучить каталог сортов</a>
+            <a href="#lead-block" class="btn btn-outline-light">Оставить заявку</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ============================== ПОЗИЦИОНИРОВАНИЕ ============================== -->
+    <section class="section">
+      <div class="container intro-grid">
+        <div class="intro-lead">
+          <hr class="divider" />
+          <h2>Растение с двойной жизнью — и репутацией эксперта, которой можно доверять</h2>
+        </div>
+        <div class="intro-body">
+          <p>Ликорис цветёт на голом стебле, без единого листа — они появятся только осенью и продержатся до весны. Именно эта особенность сделала растение символом в восточной культуре и головоломкой для садоводов средней полосы.</p>
+          <p>Мы собрали проверенный агротехнический опыт, карту питомников и инструменты расчёта посадки в одном месте — без воды и без рекламы случайных продавцов.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ТИЗЕРЫ РАЗДЕЛОВ ============================== -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="teaser-grid reveal">
+          <a href="catalog.html" class="teaser-card">
+            <svg class="teaser-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v6m0 0c-3 0-6 2-6 6m6-6c3 0 6 2 6 6M6 15c0 3 3 6 6 6s6-3 6-6"/></svg>
+            <h3>Энциклопедия сортов</h3>
+            <p>Каталог видов ликориса с фильтром по морозостойкости, высоте и периоду цветения.</p>
+            <span class="teaser-link">Открыть каталог <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a href="calendar.html" class="teaser-card">
+            <svg class="teaser-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <h3>Календарь ухода</h3>
+            <p>Интерактивный гид по месяцам: посадка, полив, обрезка и подготовка к зиме.</p>
+            <span class="teaser-link">Смотреть календарь <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a href="map.html" class="teaser-card">
+            <svg class="teaser-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <h3>Где купить</h3>
+            <p>Карта проверенных питомников-партнёров с фильтром по городу.</p>
+            <span class="teaser-link">Найти питомник <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== КАЛЬКУЛЯТОР ЛУКОВИЦ ============================== -->
+    <section class="section section-paper">
+      <div class="container calc-grid">
+        <div class="section-head">
+          <hr class="divider" />
+          <h2>Сколько луковиц нужно для вашей клумбы?</h2>
+          <p class="lead">Расчёт по стандартной схеме посадки 12×12&nbsp;см — растениям хватит места для разрастания на 2–3 сезона вперёд.</p>
+        </div>
+
+        <form id="bulb-calculator" class="calc-card reveal" onsubmit="return false">
+          <label for="calc-area">Площадь клумбы, м²</label>
+          <div class="calc-input-row">
+            <input type="number" id="calc-area" min="0" max="50" step="0.1" value="4" inputmode="decimal" />
+            <input type="range" id="calc-area-slider" min="0" max="50" step="0.1" value="4" aria-label="Площадь клумбы, слайдер" />
+          </div>
+
+          <div class="calc-result">
+            <div class="calc-result-main">
+              <span id="calc-result-count" class="calc-number" data-value="0">0</span>
+              <span class="calc-unit">луковиц</span>
+            </div>
+            <p id="calc-result-grid" class="calc-sub">—</p>
+            <p id="calc-result-reserve" class="calc-reserve"></p>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-block">Заказать расчётное количество</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================== СТАТЬИ ============================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <hr class="divider" />
+          <h2>Главные материалы</h2>
+        </div>
+        <div class="article-grid reveal">
+          <article class="article-card">
+            <a href="catalog.html" class="article-cover" aria-hidden="true" tabindex="-1">
+              <div class="article-media">
+                <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="artGrad1" cx="100" cy="72" r="62" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#3a1414"/>
+                      <stop offset="100%" stop-color="#1A1A1A"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="200" height="150" fill="url(#artGrad1)"/>
+                  <g transform="translate(100 72) scale(0.62) translate(-50 -50)" fill="none" stroke="#E60000" stroke-width="4" stroke-linecap="round">
+                    <path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/>
+                    <path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/>
+                    <path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/>
+                    <path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/>
+                    <path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/>
+                    <path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/>
+                    <path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6" opacity="0.7"/><circle cx="79.3" cy="13.8" r="2.8" fill="#E60000" stroke="none" opacity="0.7"/>
+                    <path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6" opacity="0.7"/><circle cx="96.0" cy="57.3" r="2.8" fill="#E60000" stroke="none" opacity="0.7"/>
+                    <path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6" opacity="0.7"/><circle cx="66.7" cy="93.5" r="2.8" fill="#E60000" stroke="none" opacity="0.7"/>
+                    <path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6" opacity="0.7"/><circle cx="20.7" cy="86.2" r="2.8" fill="#E60000" stroke="none" opacity="0.7"/>
+                    <path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6" opacity="0.7"/><circle cx="4.0" cy="42.7" r="2.8" fill="#E60000" stroke="none" opacity="0.7"/>
+                    <path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6" opacity="0.7"/><circle cx="33.3" cy="6.5" r="2.8" fill="#E60000" stroke="none" opacity="0.7"/>
+                    <circle cx="50" cy="50" r="5" fill="#E60000" stroke="none"/>
+                  </g>
+                </svg>
+              </div>
+            </a>
+            <p class="article-tag">Энциклопедия</p>
+            <h3><a href="catalog.html">Шесть сортов ликориса, которые стоит знать в лицо</a></h3>
+            <p>От огненно-красного radiata до нежного sprengeri — разбираем внешние отличия и зоны морозостойкости.</p>
+          </article>
+          <article class="article-card">
+            <a href="calendar.html" class="article-cover" aria-hidden="true" tabindex="-1">
+              <div class="article-media">
+                <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice">
+                  <rect width="200" height="150" fill="#F7F5F1"/>
+                  <circle cx="100" cy="75" r="40" fill="none" stroke="#D8D3C6" stroke-width="1.4"/>
+                  <path d="M100 35a40 40 0 0 1 34 60" fill="none" stroke="#E60000" stroke-width="2.4" stroke-linecap="round"/>
+                  <path d="M128 88l6 7 8-4" fill="none" stroke="#E60000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="100" cy="35" r="3.5" fill="#222222"/>
+                  <circle cx="140" cy="75" r="3.5" fill="#222222"/>
+                  <circle cx="100" cy="115" r="3.5" fill="#222222"/>
+                  <circle cx="60" cy="75" r="3.5" fill="#222222"/>
+                </svg>
+              </div>
+            </a>
+            <p class="article-tag">Уход</p>
+            <h3><a href="calendar.html">Почему листья появляются после цветов — и что с этим делать</a></h3>
+            <p>Разбираем жизненный цикл луковицы по месяцам и объясняем, когда трогать растение нельзя.</p>
+          </article>
+          <article class="article-card">
+            <a href="map.html" class="article-cover" aria-hidden="true" tabindex="-1">
+              <div class="article-media">
+                <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice">
+                  <rect width="200" height="150" fill="#1A1A1A"/>
+                  <path d="M35 115c28-58 62-66 120-68" stroke="#5a5652" stroke-width="1.6" fill="none" stroke-dasharray="1 7" stroke-linecap="round"/>
+                  <g transform="translate(35,100)">
+                    <path d="M0 15C0 6.5 3.5 0 10 0s10 6.5 10 15c0 8-10 18-10 18S0 23 0 15Z" fill="#F2F0EA"/>
+                    <circle cx="10" cy="14" r="4.2" fill="#1A1A1A"/>
+                  </g>
+                  <g transform="translate(145,28)">
+                    <path d="M0 15C0 6.5 3.5 0 10 0s10 6.5 10 15c0 8-10 18-10 18S0 23 0 15Z" fill="#E60000"/>
+                    <circle cx="10" cy="14" r="4.2" fill="#1A1A1A"/>
+                  </g>
+                </svg>
+              </div>
+            </a>
+            <p class="article-tag">Ландшафт</p>
+            <h3><a href="map.html">Ликорис в ландшафтном дизайне: где взять посадочный материал</a></h3>
+            <p>Собрали питомники, которые действительно возят редкие сорта, а не выдают гладиолус за ликорис.</p>
+          </article>
+        </div>
+
+        <div class="promo-banner reveal">
+          <div>
+            <h3>Нужен индивидуальный подбор растений под ваш климат?</h3>
+            <p>Проводник свяжет вас с питомником, который подтвердит наличие подходящего сорта.</p>
+          </div>
+          <button type="button" class="btn btn-primary" data-open-modal>Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== БЛОК ПРЕДЗАКАЗА (ЛИДОГЕНЕРАЦИЯ) ============================== -->
+    <section id="lead-block" class="section section-dark">
+      <div class="container lead-block-grid">
+        <div>
+          <hr class="divider" />
+          <h2>Коллективная предзакупка луковичных к сезону</h2>
+          <p class="lead" style="color:var(--color-text-muted-dark)">Осенью питомники-партнёры формируют общую поставку — это снижает цену для каждого заказчика. Оставьте заявку, и мы включим вас в ближайшую партию.</p>
+        </div>
+        <form class="lead-form contact-form-compact reveal" novalidate>
+          <div class="field">
+            <label for="lb-name">Имя</label>
+            <input type="text" id="lb-name" name="name" required />
+            <span class="field-error">Пожалуйста, укажите имя</span>
+          </div>
+          <div class="field">
+            <label for="lb-contact">Телефон / Telegram</label>
+            <input type="text" id="lb-contact" name="contact" placeholder="+7 900 000-00-00 или @username" required />
+            <span class="field-error">Проверьте формат контакта</span>
+          </div>
+          <div class="field">
+            <label for="lb-region">Регион / Город</label>
+            <input type="text" id="lb-region" name="region" required />
+            <span class="field-error">Укажите город</span>
+          </div>
+          <div class="checkbox-field">
+            <input type="checkbox" id="lb-consent" name="consent" required />
+            <label for="lb-consent">Я согласен с <a href="privacy.html">Политикой конфиденциальности</a></label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Записаться в предзаказ</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== ФУТЕР ============================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+            Lycoris
+          </a>
+          <p>Информационный портал о редких луковичных растениях. Не является интернет-магазином — соединяем читателей с проверенными питомниками.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Разделы</h2>
+          <ul>
+            <li><a href="catalog.html">Энциклопедия сортов</a></li>
+            <li><a href="calendar.html">Календарь ухода</a></li>
+            <li><a href="map.html">Где купить</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Портал</h2>
+          <ul>
+            <li><a href="contact.html">Оставить заявку</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Контакты</h2>
+          <ul>
+            <li><a href="mailto:hello@lycoris-portal.ru">hello@lycoris-portal.ru</a></li>
+            <li><a href="contact.html">Написать проводнику</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Информационный портал «Lycoris». Все права защищены.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="privacy.html#terms">Пользовательское соглашение</a>
+          <a href="privacy.html#152fz">152-ФЗ «О персональных данных»</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================== МОДАЛЬНОЕ ОКНО: ЗАЯВКА ============================== -->
+  <div id="lead-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть окно">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h3>Оставить заявку</h3>
+      <p class="modal-sub">Проводник свяжется с вами и подтвердит наличие у партнёров.</p>
+      <form class="lead-form" novalidate>
+        <div class="field" style="display:none">
+          <label for="modal-context">Интересует</label>
+          <input type="text" id="modal-context" name="context" readonly />
+        </div>
+        <div class="field">
+          <label for="md-name">Имя</label>
+          <input type="text" id="md-name" name="name" required />
+          <span class="field-error">Пожалуйста, укажите имя</span>
+        </div>
+        <div class="field">
+          <label for="md-contact">Телефон / Telegram</label>
+          <input type="text" id="md-contact" name="contact" placeholder="+7 900 000-00-00 или @username" required />
+          <span class="field-error">Проверьте формат контакта</span>
+        </div>
+        <div class="field">
+          <label for="md-region">Регион / Город</label>
+          <input type="text" id="md-region" name="region" required />
+          <span class="field-error">Укажите город</span>
+        </div>
+        <div class="field">
+          <label for="md-comment">Комментарий к заказу <span class="optional">(необязательно)</span></label>
+          <textarea id="md-comment" name="comment"></textarea>
+        </div>
+        <div class="checkbox-field">
+          <input type="checkbox" id="md-consent" name="consent" required />
+          <label for="md-consent">Я согласен с <a href="privacy.html">Политикой конфиденциальности</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Шаблон окна успеха, переиспользуется формой (см. js/form.js) -->
+  <template id="success-template">
+    <div class="success-box">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h3>Ваша заявка принята</h3>
+      <p>Проводник свяжется с вами в течение 2 часов.</p>
+    </div>
+  </template>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

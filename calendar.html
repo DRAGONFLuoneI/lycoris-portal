@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>Календарь ухода — Lycoris</title>
+  <meta name="description" content="Интерактивный календарь ухода за ликорисом по месяцам: посадка, полив, обрезка и подготовка к зиме." />
+  <!-- Open Graph / Twitter: как ссылка на страницу выглядит в соцсетях и мессенджерах.
+       Перед публикацией замените https://lycoris-portal.ru на реальный домен сайта. -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Lycoris" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="Календарь ухода — Lycoris" />
+  <meta property="og:description" content="Интерактивный календарь ухода за ликорисом по месяцам: посадка, полив, обрезка и подготовка к зиме." />
+  <meta property="og:url" content="https://lycoris-portal.ru/calendar.html" />
+  <meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Red%20spider%20lily%20(Lycoris%20radiata).webp?width=1200" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Календарь ухода — Lycoris" />
+  <meta name="twitter:description" content="Интерактивный календарь ухода за ликорисом по месяцам: посадка, полив, обрезка и подготовка к зиме." />
+  <meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Red%20spider%20lily%20(Lycoris%20radiata).webp?width=1200" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/calendar.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header is-solid">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+        Lycoris
+      </a>
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Энциклопедия сортов</a></li>
+          <li><a href="calendar.html" aria-current="page">Календарь ухода</a></li>
+          <li><a href="map.html">Где купить</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Оставить заявку</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow-tag">Календарь ухода</p>
+        <h1>Что делать в саду по месяцам</h1>
+        <p class="lead">Ликорис живёт в противофазе с большинством луковичных: цветёт без листьев, а листва работает всю зиму. Выберите месяц на круге — и увидите, что делать именно сейчас.</p>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container calendar-layout">
+        <h2 class="visually-hidden">Календарь работ по месяцам</h2>
+        <div class="calendar-wheel-wrap">
+          <div id="calendar-wheel" class="calendar-wheel" role="group" aria-label="Выбор месяца"></div>
+          <div class="calendar-wheel-center" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="38" height="38" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+          </div>
+        </div>
+
+        <div id="calendar-panel" class="calendar-panel"></div>
+      </div>
+    </section>
+
+    <section class="section section-paper">
+      <div class="container legend-grid">
+        <div class="legend-item">
+          <span class="legend-dot legend-dot--bloom"></span>
+          <div>
+            <h4>Период цветения</h4>
+            <p>Июль – октябрь, в зависимости от сорта. Цветонос появляется до листьев.</p>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot legend-dot--rest"></span>
+          <div>
+            <h4>Рост и покой</h4>
+            <p>Остальные месяцы — время для листвы, деления луковиц и подготовки почвы.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="promo-banner reveal">
+          <div>
+            <h3>Не уверены, что подходит для вашего региона?</h3>
+            <p>Проводник поможет скорректировать календарь под ваш климат.</p>
+          </div>
+          <button type="button" class="btn btn-primary" data-open-modal>Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="logo-mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M50.0,39.9 Q48.0,31.3 44.9,21.1 Q39.7,18.3 34.5,18.3"/><path d="M58.7,45.0 Q65.2,38.9 72.5,31.2 Q72.3,25.3 69.7,20.8"/><path d="M58.7,55.0 Q67.2,57.7 77.6,60.0 Q82.6,56.9 85.2,52.5"/><path d="M50.0,60.1 Q52.0,68.7 55.1,78.9 Q60.3,81.7 65.5,81.7"/><path d="M41.3,55.0 Q34.8,61.1 27.5,68.8 Q27.7,74.7 30.3,79.2"/><path d="M41.3,45.0 Q32.8,42.3 22.4,40.0 Q17.4,43.1 14.8,47.5"/><path d="M52.2,46.2 Q66.6,25.4 79.3,13.8" stroke-width="2.6"/><circle cx="79.3" cy="13.8" r="2.8" fill="currentColor" stroke="none"/><path d="M54.4,50.0 Q79.6,52.1 96.0,57.3" stroke-width="2.6"/><circle cx="96.0" cy="57.3" r="2.8" fill="currentColor" stroke="none"/><path d="M52.2,53.8 Q63.0,76.7 66.7,93.5" stroke-width="2.6"/><circle cx="66.7" cy="93.5" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,53.8 Q33.4,74.6 20.7,86.2" stroke-width="2.6"/><circle cx="20.7" cy="86.2" r="2.8" fill="currentColor" stroke="none"/><path d="M45.6,50.0 Q20.4,47.9 4.0,42.7" stroke-width="2.6"/><circle cx="4.0" cy="42.7" r="2.8" fill="currentColor" stroke="none"/><path d="M47.8,46.2 Q37.0,23.3 33.3,6.5" stroke-width="2.6"/><circle cx="33.3" cy="6.5" r="2.8" fill="currentColor" stroke="none"/><circle cx="50" cy="50" r="5" fill="currentColor" stroke="none"/></svg>
+            Lycoris
+          </a>
+          <p>Информационный портал о редких луковичных растениях. Не является интернет-магазином — соединяем читателей с проверенными питомниками.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Разделы</h2>
+          <ul>
+            <li><a href="catalog.html">Энциклопедия сортов</a></li>
+            <li><a href="calendar.html">Календарь ухода</a></li>
+            <li><a href="map.html">Где купить</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Портал</h2>
+          <ul>
+            <li><a href="contact.html">Оставить заявку</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Контакты</h2>
+          <ul>
+            <li><a href="mailto:hello@lycoris-portal.ru">hello@lycoris-portal.ru</a></li>
+            <li><a href="contact.html">Написать проводнику</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Информационный портал «Lycoris». Все права защищены.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="privacy.html#terms">Пользовательское соглашение</a>
+          <a href="privacy.html#152fz">152-ФЗ «О персональных данных»</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lead-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть окно">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h3>Оставить заявку</h3>
+      <p class="modal-sub">Проводник свяжется с вами и подтвердит наличие у партнёров.</p>
+      <form class="lead-form" novalidate>
+        <div class="field" style="display:none">
+          <label for="modal-context">Интересует</label>
+          <input type="text" id="modal-context" name="context" readonly />
+        </div>
+        <div class="field">
+          <label for="md-name">Имя</label>
+          <input type="text" id="md-name" name="name" required />
+          <span class="field-error">Пожалуйста, укажите имя</span>
+        </div>
+        <div class="field">
+          <label for="md-contact">Телефон / Telegram</label>
+          <input type="text" id="md-contact" name="contact" placeholder="+7 900 000-00-00 или @username" required />
+          <span class="field-error">Проверьте формат контакта</span>
+        </div>
+        <div class="field">
+          <label for="md-region">Регион / Город</label>
+          <input type="text" id="md-region" name="region" required />
+          <span class="field-error">Укажите город</span>
+        </div>
+        <div class="field">
+          <label for="md-comment">Комментарий к заказу <span class="optional">(необязательно)</span></label>
+          <textarea id="md-comment" name="comment"></textarea>
+        </div>
+        <div class="checkbox-field">
+          <input type="checkbox" id="md-consent" name="consent" required />
+          <label for="md-consent">Я согласен с <a href="privacy.html">Политикой конфиденциальности</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+
+  <template id="success-template">
+    <div class="success-box">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h3>Ваша заявка принята</h3>
+      <p>Проводник свяжется с вами в течение 2 часов.</p>
+    </div>
+  </template>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

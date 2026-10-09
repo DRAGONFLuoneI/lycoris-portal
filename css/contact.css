@@ -1,0 +1,66 @@
+/* ==========================================================================
+   CONTACT.CSS — страница «Оставить заявку»
+   ========================================================================== */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-l);
+  align-items: start;
+}
+
+/* ---- Шаги процесса -------------------------------------------------------- */
+.process-steps { display: flex; flex-direction: column; gap: var(--space-m); counter-reset: step; margin-bottom: var(--space-l); }
+.process-steps li { position: relative; padding-left: 2.6rem; counter-increment: step; }
+.process-steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+}
+.process-steps h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+.process-steps p { font-size: 0.9rem; color: var(--color-text-muted); }
+
+.contact-direct {
+  padding-top: var(--space-m);
+  border-top: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.contact-direct h4 { font-family: var(--font-body); font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.2rem; }
+.contact-direct a { font-weight: 600; }
+.contact-direct a:hover { color: var(--color-accent); }
+
+/* ---- Карточка формы --------------------------------------------------------- */
+.contact-form-card {
+  background: var(--color-paper);
+  border-radius: var(--radius-s);
+  padding: var(--space-m);
+  border: 1px solid var(--color-line);
+}
+
+.radio-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.radio-pill {
+  display: flex; align-items: center; gap: 0.45rem;
+  border: 1px solid var(--color-line);
+  border-radius: 100px;
+  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast);
+}
+.radio-pill input { accent-color: var(--color-accent); }
+.radio-pill:has(input:checked) { border-color: var(--color-accent); color: var(--color-accent); font-weight: 600; }
+
+.cf-turnstile { margin-block: var(--space-s); }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
