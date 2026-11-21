@@ -1,0 +1,13 @@
+stateDiagram-v2
+
+    [*] --> NEW : отправка формы
+    state "Новая" as NEW
+    state "В работе" as IN_WORK
+    state "Выполнена" as DONE
+    state "Отклонена" as REJECTED
+    NEW --> IN_WORK : администратор взял в работу
+    NEW --> REJECTED : некорректная или дублирующая заявка
+    IN_WORK --> DONE : заказ оформлен
+    IN_WORK --> REJECTED : отказ клиента
+    DONE --> [*]
+    REJECTED --> [*]

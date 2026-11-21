@@ -1,5 +1,5 @@
 flowchart TD
-    START([Начало]) --> A["Пользователь открывает<br/>форму заявки"]
+    START((" ")) --> A["Пользователь открывает<br/>форму заявки"]
     A --> B{Пользователь<br/>авторизован?}
 
     B -->|Да| C["Поля формы заполняются<br/>данными профиля"]
@@ -43,10 +43,10 @@ flowchart TD
     U -->|Да| W["Присвоить статус «Новая»"]
     W --> X["Показать окно<br/>«Ваша заявка принята»"]
     X --> Y["Заявка появляется<br/>в панели администратора"]
-    Y --> Z([Конец])
+    Y --> Z(((" ")))
 
-    style START fill:#1A1A1A,color:#fff
-    style Z fill:#1A1A1A,color:#fff
+    style START fill:#000000,stroke:#000000
+    style Z fill:#ffffff,stroke:#000000,stroke-width:3px
     style G fill:#fff3cd,stroke:#C9A227
     style T fill:#e5f5e5,stroke:#3d5c3a
     style X fill:#ffe5e5,stroke:#E60000

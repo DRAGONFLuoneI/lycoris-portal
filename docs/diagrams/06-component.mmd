@@ -1,0 +1,29 @@
+flowchart TB
+    subgraph BR["Браузер посетителя"]
+        direction TB
+        PAGES["HTML-страницы<br/>index, catalog, calendar, map, contact,<br/>register, login, account, admin"]
+        subgraph JS["Модули JavaScript"]
+            direction LR
+            AUTH["auth.js<br/>аутентификация"]
+            FORM["form.js<br/>заявки"]
+            CAT["catalog.js<br/>энциклопедия"]
+            ACC["account.js<br/>кабинет садовода"]
+            ADM["admin.js<br/>панель администратора"]
+            DB["db.js<br/>слой данных"]
+        end
+        CSS["css/*.css<br/>стили и адаптивность"]
+    end
+    subgraph DATA["Хранение данных"]
+        direction LR
+        LS[("localStorage<br/>демонстрационный режим")]
+        SQL[("MySQL<br/>схема database/schema.sql")]
+    end
+    PAGES --> JS
+    PAGES --> CSS
+    AUTH --> DB
+    FORM --> DB
+    CAT --> DB
+    ACC --> DB
+    ADM --> DB
+    DB --> LS
+    DB -. "целевая СУБД" .-> SQL
